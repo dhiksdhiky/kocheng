@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pusheen Gembul Corner 🐾</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Meow! Butuh Asupan Kelucuan?</h1>
+            <p>Klik tombol untuk melihat gambar kucing acak!</p>
+        </header>
+
+        <div class="image-card">
+            <div class="image-placeholder" id="imagePlaceholder">
+                <div class="loading-spinner" id="loadingSpinner"></div>
+            </div>
+            <img src="" alt="Gambar Kucing Acak" id="catImage" style="display: none;">
+        </div>
+
+        <button id="getCatBtn" class="action-button">
+            Lagi, dong! 😻
+        </button>
+
+        <footer>
+            Images from <a href="https://thecatapi.com/" target="_blank" rel="noopener noreferrer">TheCatAPI.com</a>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
