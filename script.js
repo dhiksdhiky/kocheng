@@ -5,10 +5,10 @@ const imagePlaceholder = document.getElementById('imagePlaceholder');
 
 const CAT_API_URL = 'https://api.thecatapi.com/v1/images/search';
 
-// --- PENTING: Masukkan API Key Anda di sini! ---
+// --- (Opsional) Masukkan API Key Anda di sini! ---
 // Daftar gratis di: https://thecatapi.com/signup
-// JANGAN BAGIKAN KODE INI SECARA PUBLIK JIKA MENGANDUNG API KEY ASLI
-const apiKey = "MASUKKAN_API_KEY_ANDA_DISINI"; // <<< GANTI INI!
+// TheCatAPI bisa digunakan tanpa key untuk pencarian dasar.
+const apiKey = "";
 
 // Fungsi untuk mengambil dan menampilkan gambar kucing
 async function fetchCatPicture() {
@@ -19,24 +19,14 @@ async function fetchCatPicture() {
     getCatBtn.disabled = true;
     getCatBtn.textContent = 'Loading Meow...';
 
-    // Cek apakah API Key sudah dimasukkan
-    if (apiKey === "live_q2naG2Oz4LVMyEFWHirQnzrPgCQ9Lbfld1A3Rlhqmony3Gfi2HnqLY9nhZq46ryq" || apiKey.trim() === "") {
-        console.error("API Key belum dimasukkan ke dalam script.js!");
-        alert("Mohon masukkan API Key dari TheCatAPI.com ke dalam file script.js");
-        loadingSpinner.style.display = 'none';
-        getCatBtn.disabled = false;
-        getCatBtn.textContent = 'Lagi, dong! 😻';
-        // Tampilkan pesan error di placeholder
-        imagePlaceholder.innerHTML = '<p style="color:red; text-align:center;">Error: API Key dibutuhkan!</p>';
-        return; // Hentikan fungsi
+    const headers = {};
+    if (apiKey && apiKey.trim() !== "" && apiKey !== "MASUKKAN_API_KEY_ANDA_DISINI") {
+        headers['x-api-key'] = apiKey;
     }
-
 
     try {
         const response = await fetch(CAT_API_URL, {
-            headers: {
-                'x-api-key': apiKey // Kirim API key via header
-            }
+            headers: headers
         });
 
         if (!response.ok) {
